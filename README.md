@@ -21,24 +21,17 @@ I decided to skip authentication / authorization entirely. Given it is the same 
  - A third party library, e.g Devise
  - A third party service, e.g. Auth0, Firebase or AWS Cognito which comes with lots of bells and whistles out of the box
 
-### Database (SQLite)
+### Database (Postgres and SQLite)
 
-Just using SQLite for this small low-volume demo. For a larger app, I'd generally choose Postgres since it comes with pretty much everything needed in a DB. (https://www.amazingcto.com/postgres-for-everything/).
+Locally, and when running integration tests I use a SQLite DB, for speed and simplicity. In the production deployment I use a Postgres DB. For this app they are similar enough, but of course could run into issues where the app behaves differently when using SQLite vs Postgres.
 
-If I really needed global scale and BASE was OK for this, I might consider a NoSQL DB.
+I think Postgres is a great DB, with loads of features that end up being useful in an app (I use it as the Rails websocket driver later also). (https://www.amazingcto.com/postgres-for-everything/).
+
+If we really needed global scale and BASE was OK for this, I might consider a NoSQL DB.
 
 ### Javascript
 
-There is almost no JS for this app.
-
-#### Pros
-- Even on browsers with JS the user can use a fully functioning version of the app before the JS has downloaded and executed.
-- All browser functionality works as expected and is not hijacked in any way
-#### Cons
-- As the project grows and more engineers come on board, having a JS framework that allows for easy componentisation would likely be beneficial.
-- Not an SPA so will feel less 'app' like to the end user.
-
-If we were to change to an SPA I would likely split the frontend into a different repository and host it statically somewhere. Then use Rails purely as an API.
+There is very little JS used in this app. The JS that is used is done via progressive enhancement, meaning the app works perfectly without JS enabled. When JS is enabled, functionality is not blocked waiting for the JS to download and execute.
 
 ### Styling (Tailwind)
 
@@ -48,22 +41,20 @@ I chose TailwindCSS for a CSS framework, just to provide a sensible colour palet
 
 I just used a simple Rest API, I find GraphQL almost always overkill, doubly so for an app this small!
 
-### Realtime (Websockets)
+### Realtime (ActionCable)
 
-I used websocket for realtime updates of the feed. 
+Whenever a new question is added, a yellow banner will be shown asking the user to refresh to update the question list. This is achieved using websockets via the ActionCable Rails library. 
+
+This could also be added to answers, and the quetions could be inserted automatically instead of the user having to refresh the page.
 
 
 ### Testing
 
-There are endpoint tests included (from scaffolding out the controllers). Ideally, I'd like to add a browser test for at least one flow. 
+There are endpoint tests included (from scaffolding out the controllers). Ideally, I'd like to add a browser test for at least one flow, in the JS world I'd use Cypress or Playwright, I guess these would work just as well for Rails! 
 
 ### Hosting
 
 Hosted on Heroku, you can view it [here](https://fathomless-garden-91108.herokuapp.com/questions).
-
-Since this is on a single instance, if there is any downtime, it will be user-impacting. In a real world scenario, I would have multiple instances and do some form of auto-healing and blue-green deploy.
-
-Since the DB is hosted on this one instance, if there is a storage failure then data will be irrecoverably lost (and is irrecoverable lost on every deploy, which wouldn't be ideal in real life!!). In the real world, would host the DB with read-replicas to prevent downtime and take automatic snapshots for data recovery.
 
 ### Deploymnent
 

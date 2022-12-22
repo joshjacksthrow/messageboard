@@ -1,10 +1,14 @@
-<div class="w-full">
+<div class="w-full" data-controller="questions">
   <div class="flex justify-between items-center sm:flex-row flex-col">
     <h1 class="font-bold text-4xl mb-4">Latest Questions</h1>
     <%= link_to 'Ask a question', new_question_path, class: "rounded-lg py-2 px-4 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <hr class="my-4">
+
+  <div class="bg-yellow-300 text-yellow-900 px-4 py-2 mb-2" data-questions-target="banner" hidden>
+    <span>New questions have been posted, refresh to view</span>
+  </div>
 
 
   <% if @questions.empty? %>

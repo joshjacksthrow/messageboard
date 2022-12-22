@@ -23,6 +23,9 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+
+        ActionCable.server.broadcast "questions", {}
+
         format.html do
           redirect_to question_url(@question), notice: "Question was successfully created."
         end
