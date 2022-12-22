@@ -23,6 +23,8 @@ But since this is a technical task I think Rails gives a good balance between pr
 
 ### Database
 
+Just using SQLite for this small low-volume demo.
+
 ### Javascript
 
 I kept the Javascript on this one minimal.
@@ -34,12 +36,13 @@ I kept the Javascript on this one minimal.
 #### Cons
 - As the project grows and more engineers come on board, having a JS framework that allows for easy componentisation would likely be beneficial.
 - Not an SPA so will feel less 'app' like to the end user.
+- 
 
 If we were to change to an SPA I would likely split this into a different repository and host it statically somewhere. Then use Rails purely as an API.
 
 ### Styling
 
-I chose TailwindCSS for a CSS framework. 
+I chose TailwindCSS for a CSS framework, just to provide a sensible colour palette and utilities out of the box.
 
 ### Accessibility
 
@@ -66,11 +69,15 @@ I included a single E2E test using Puppeteer just to demonstrate how I would do 
 
 ### Webserver
 
+Using Puma, if this were a higher traffic app
 ### Hosting
 
+Hosted at ____ on a simple digital ocean droplet.
 ### Environments
 
 ### Deploymnent
+
+A simple Github Actions pipeline that tests, lints and deploys 
 
 ### Further Improvements
 
