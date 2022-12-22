@@ -7,6 +7,16 @@
 - `bin/dev`
 - Go to `localhost:3000`
 
+## Brief Overview
+
+An app that allows you to:
+  - Post a question with a title and body
+  - Edit a question
+  - Delete a question
+  - Answer a question with a body
+
+Also there is a banner that prompts the user to refresh the page if a new question has been posted.
+
 ## Technical Decisions
 
 ### Framework (Rails)

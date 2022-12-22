@@ -61,6 +61,12 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def purge
+    Question.delete_all
+
+    redirect_to questions_url
+  end
 
   private
 
@@ -73,4 +79,5 @@ class QuestionsController < ApplicationController
   def question_params
     params.require(:question).permit(:title, :body)
   end
+  
 end
