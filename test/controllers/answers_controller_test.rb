@@ -13,7 +13,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create answer" do
     assert_difference("Answer.count") do
-      post question_answers_url(@question), params: { answer: { body: @answer.body, question_id: @answer.question_id } }
+      post question_answers_url(@question), params: { answer: { body: "Lorem ipsum test test some text here that meets requirement of length" } }
     end
 
     assert_redirected_to question_url(@question)
