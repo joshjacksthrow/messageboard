@@ -1,0 +1,26 @@
+<div class="mx-auto w-full">
+  <div class="flex justify-between items-center">
+    <div class="flex items-center space-x-4">
+    </div>
+  </div>
+
+    <div class="md:flex md:items-center md:justify-between">
+      <div class="min-w-0 flex-1">
+        <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"><%= @question.title %></h2>
+      </div>
+      <div class="mt-4 flex md:mt-0 md:ml-4">
+      <%= link_to 'Edit', edit_question_path(@question), class: "inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+      <%= button_to 'Delete', question_path(@question), method: :delete, class: "ml-3 inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" %>
+      </div>
+    </div>
+
+
+  <div class="mx-auto">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <%= render @question %>
+
+  </div>
+</div>

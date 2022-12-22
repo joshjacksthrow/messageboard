@@ -1,0 +1,8 @@
+<%= link_to question, class: "block hover:bg-gray-200 rounded p-4" do %>
+  <div id="<%= dom_id question %>" >
+    <h1 class="text-2xl"><%= question.title %></h1>
+    <p><%= question.body %></p>
+
+
+  </div>
+<% end %>
