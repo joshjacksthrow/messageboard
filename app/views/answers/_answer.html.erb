@@ -1,7 +1,13 @@
 <div id="<%= dom_id answer %>">
-  <p class="my-5">
-    <%= answer.body %>
-  </p>
+  <div class="my-5">
+    <p >
+      <%= answer.body %>
+    </p>
+
+    <h6 class="text-gray-400 text-sm">
+      Answered on <%= answer.created_at.to_s(:human) %>
+    <h6>
+  </div>
 
   <% if action_name != "show" %>
     <%= link_to "Show this answer", answer, class: "rounded-lg py-2 px-4 bg-gray-100 inline-block font-medium" %>

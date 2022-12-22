@@ -1,8 +1,12 @@
 <%= link_to question, class: "block hover:bg-gray-200 rounded p-4" do %>
   <div id="<%= dom_id question %>" >
-    <h1 class="text-2xl"><%= question.title %></h1>
+    <h3 class="text-2xl underline"><%= question.title %></h3>
     <p><%= question.body %></p>
 
 
+    <h6 class="text-gray-400 text-sm">
+      <span class="font-bold"><%= pluralize(question.answers.count, "answer") %></span>
+      Asked on <%= question.created_at.to_s(:human) %>
+    <h6>
   </div>
 <% end %>
