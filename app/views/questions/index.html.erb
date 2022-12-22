@@ -6,6 +6,11 @@
 
   <hr class="my-4">
 
+
+  <% if @questions.empty? %>
+    <%= render partial: "shared/empty", locals: { name: "question", action: new_question_path } %>
+  <% end %>
+
   <div id="questions" class="min-w-full">
     <%= render @questions %>
   </div>

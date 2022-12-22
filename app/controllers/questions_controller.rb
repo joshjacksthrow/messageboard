@@ -21,8 +21,6 @@ class QuestionsController < ApplicationController
 
   # POST /questions or /questions.json
   def create
-    puts "HEYOO"
-    puts question_params
     @question = Question.new(question_params)
 
     respond_to do |format|
@@ -62,7 +60,7 @@ class QuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params[:id])
+      @question = Question.includes(:answers).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
